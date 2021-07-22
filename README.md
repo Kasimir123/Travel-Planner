@@ -11,10 +11,14 @@ This is a personal project meant to help me plan out my travels after I graduate
 - Displays all countries you have selected to visit
 - Select from a list of countries and regions to add to your list
 
+![Main View](https://github.com/Kasimir123/Travel-Planner/blob/photos/photos/main-screen.png?raw=true)
+
 ### Country View
 
 - Displays all cities you have added to your list
 - Select from cities within the country to add to your list
+
+![Country View](https://github.com/Kasimir123/Travel-Planner/blob/photos/photos/country-view.png?raw=true)
 
 ### City View
 
@@ -34,6 +38,9 @@ This is a personal project meant to help me plan out my travels after I graduate
         - Displays average, low, and high prices for markets in the area
     - Transportation Costs:
         - Displays average, low, and high prices for transportation costs in the area
+
+![City View](https://github.com/Kasimir123/Travel-Planner/blob/photos/photos/city-view.png?raw=true)
+![Cost Breakdown](https://github.com/Kasimir123/Travel-Planner/blob/photos/photos/cost-breakdown.png?raw=true)
 
 ### Persistence
 
