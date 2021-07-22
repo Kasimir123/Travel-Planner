@@ -3,7 +3,8 @@ const {
   ipcRenderer
 } = require("electron");
 
-const validChannels = ["getData", "getCountries", "updateCountries", "setCountries", "getCities", "updateCities", "setCities"];
+const validChannels = ["getData", "getCountries", "updateCountries", "setCountries", "getCities", "updateCities", "setCities", "setCostOfliving",
+    "getCostOfliving"];
 
 // Expose protected methods that allow the renderer process to use
 // the ipcRenderer without exposing the entire object

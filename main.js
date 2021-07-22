@@ -29,6 +29,7 @@ async function createWindow() {
 var globalData;
 var countries = [];
 var globalCountries;
+var globalCostOfLiving;
 
 function initializeData()
 {
@@ -104,6 +105,12 @@ function saveData()
   });
 }
 
+function stripString(str)
+{
+  str = str.replace('İ', 'I');
+  return str.toLowerCase();
+}
+
 app.on("ready", createWindow);
 
 ipcMain.on("getData", (event, args) => {
@@ -115,7 +122,8 @@ ipcMain.on("getCountries", (event, args) => {
 });
 
 ipcMain.on("updateCountries", (event, args) => {
-  globalData.countries[args] = {};
+  if (!(args in globalData.countries))
+    globalData.countries[args] = {};
   win.webContents.send("updateCountries", globalData);
   saveData();
 });
@@ -128,7 +136,8 @@ ipcMain.on("updateCities", (event, args) => {
   }
   else
   {
-    globalData.countries[args[0]].cities[args[1]] = {};
+    if (!(args[1] in globalData.countries[args[0]].cities))
+      globalData.countries[args[0]].cities[args[1]] = {};
   }
   win.webContents.send("updateCities", globalData.countries[args[0]]);
   saveData();
@@ -163,5 +172,20 @@ ipcMain.on("getCities", (event, args) => {
       }
   
       win.webContents.send("getCities", innerStr);
+});
+
+ipcMain.on("setCostOfliving", (event, args) => {
+  globalCostOfLiving = args;
+});
+
+ipcMain.on("getCostOfliving", (event, args) => {
+  var city = args[0];
+  var country = args[1];
+
+  globalCostOfLiving.forEach(item => {
+    if (item[0] == stripString(city) && item[1] == stripString(country)) 
+      win.webContents.send("getCostOfliving", item);
+  });
+
 });
 

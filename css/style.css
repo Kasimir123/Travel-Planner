@@ -76,3 +76,8 @@ ul {
 .form-select {
     background-image: url("../img/dropdown.svg") !important;
 }
+
+.cost-item {
+    border: none!important;
+    background-color: #eee!important;
+}

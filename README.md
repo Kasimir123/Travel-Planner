@@ -23,14 +23,32 @@ This is a personal project meant to help me plan out my travels after I graduate
     - Quries the next two months
     - Averages all costs, stores highest and lowest cost viewable in a popover
     - Will update based on the number of people selected
+- Queries current cost of living data from Numbeo
+    - Index Display:
+        - Cost of living index
+        - Groceries index
+        - Restaurant price index
+    - Restaurant Costs:
+        - Displays average, low, and high prices for restaurants in the area
+    - Market Costs:
+        - Displays average, low, and high prices for markets in the area
+    - Transportation Costs:
+        - Displays average, low, and high prices for transportation costs in the area
 
 ### Persistence
 
 - Saves data locally in data.json
 
+### Responsive Design
+
+- All components in the application scale with the application to provide a seamless user experience
+
 ## Installation
 
 ```bash
+# Go into the root directory
+cd Travel-Planner
+
 # Install dependencies
 npm install
 
