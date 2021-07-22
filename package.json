@@ -1,0 +1,19 @@
+{
+  "name": "travel-planner",
+  "version": "1.0.0",
+  "description": "Travel Planning Application",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "repository": "https://github.com/Kasimir123/Travel-Planner",
+  "keywords": [
+  ],
+  "author": "Kasimir Schulz",
+  "devDependencies": {
+    "electron": "^13.1.6"
+  },
+  "dependencies": {
+    "jquery": "^3.6.0"
+  }
+}

@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
+  <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; connect-src *.airbnb.com/*"> -->
+  <title>Travel Planner!</title>
+  <link href="./bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="./bower_components/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+  <link rel="stylesheet" type="text/css" href="./css/style.css">
+</head>
+
+<body class="overflow-hidden">
+  <div class="container-fluid h-100 mt-4 mb-4 pt-4 pb-4">
+    <div class="row h-100">
+      <div class="col-12 h-100">
+        <div class="card h-100">
+          <div class="card-body h-100 container">
+            <div class="row h-90 pt-1 pb-1">
+              <div class="col-12 h-100 text-center text-bottom">
+                <div class="card h-100">
+                  <div class="card-body h-100 blurred-back container overflow-auto">
+                    <ul id="country-list">
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row pt-2 mt-2 pb-1">
+              <div class="col-12 text-center text-bottom">
+                <button type="button" class="btn btn-outline-success w-100" data-bs-toggle="modal" data-bs-target="#addCountryModal">Add Country</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="modal fade" id="addCountryModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title w-100 text-center">Add Country</h5>
+        </div>
+        <div class="modal-body">
+          <select class="form-select" id="country-select" aria-label="Default select example">
+            
+          </select>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" id="add-country">Add</button>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="countryModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-fullscreen">
+      <div class="modal-content">
+        <div class="modal-header border-0">
+          <h5 class="modal-title w-100 text-center" id="country-name"></h5>
+        </div>
+        <div class="modal-body container h-100 mt-4 mb-4 pt-4 pb-4">
+
+            <div class="row h-100">
+              <div class="col-12 h-100">
+                <div class="card h-100">
+                  <div class="card-body h-100 container">
+                    <div class="row h-90 pt-1 pb-1">
+                      <div class="col-12 h-100 text-center text-bottom">
+                        <div class="card h-100">
+                          <div class="card-body h-100 blurred-back container overflow-auto">
+                            <ul id="city-list">
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row pt-2 mt-2 pb-1">
+                      <div class="col-12 text-center text-bottom">
+                        <button type="button" class="btn btn-outline-success w-100 add-city-modal" data-bs-toggle="modal" data-bs-target="#addCityModal">Add City</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
+        <div class="modal-footer border-0">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="addCityModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title w-100 text-center">Add City</h5>
+        </div>
+        <div class="modal-body">
+          <select class="form-select" id="city-select" aria-label="Default select example">
+            
+          </select>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" id="add-city">Add</button>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="cityModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-fullscreen">
+      <div class="modal-content">
+        <div class="modal-header border-0">
+          <h5 class="modal-title w-100 text-center" id="city-name"></h5>
+        </div>
+        <div class="modal-body container h-100 mt-4 mb-4 pt-4 pb-4">
+
+            <div class="row h-100">
+              <div class="col-12 h-100">
+                <div class="card h-100">
+                  <div class="card-body h-100 container overflow-auto">
+                    <div class="row mt-3">
+                      <div class="col-12">
+                        <label class="form-label"><strong>Living Costs</strong></label>
+                      </div>
+                    </div>
+                    <div class="row mt-1">
+                      <div class="col-6">
+                        <label class="form-label">Number Of People</label>
+                      </div>
+                      <div class="col-6">
+                        <label class="form-label">Average Cost</label>
+                      </div>
+                    </div>
+                    <div class="row mt-1">
+                      <div class="col-6">
+                        <input type="text" class="form-control" id="num-of-people" placeholder="Number Of People">
+                      </div>
+                      <div class="col-6">
+                          <input type="text" class="form-control disabledPopover" id="avg-housing-cost" placeholder="Average Cost" disabled>
+                      </div>
+                    </div>
+                    <div class="row mt-3">
+                      <div class="col-12">
+                        <label class="form-label"><strong>Transportation Costs</strong></label>
+                      </div>
+                    </div>
+                    <div class="row mt-1">
+                      <div class="col-6">
+                        <label class="form-label">Type of Transportation</label>
+                      </div>
+                      <div class="col-6">
+                        <label class="form-label">Average Cost</label>
+                      </div>
+                    </div>
+                    <div class="row mt-1">
+                      <div class="col-6">
+                        <select class="form-select" aria-label="Default select example">
+                          <option selected>Open this select menu</option>
+                          <option value="1">Car</option>
+                          <option value="2">Motorcycle</option>
+                          <option value="3">Train</option>
+                          <option value="4">Bus</option>
+                        </select>
+                      </div>
+                      <div class="col-6">
+                          <input type="text" class="form-control disabledPopover" placeholder="Average Cost" disabled>
+                      </div>
+                    </div>
+                    <div class="row mt-3">
+                      <div class="col-12">
+                        <label class="form-label"><strong>Food Costs</strong></label>
+                      </div>
+                    </div>
+                    <div class="row mt-1">
+                      <div class="col-6">
+                        <label class="form-label">Average Restaurant Costs</label>
+                      </div>
+                      <div class="col-6">
+                        <label class="form-label">Average Grocery Cost</label>
+                      </div>
+                    </div>
+                    <div class="row mt-1">
+                      <div class="col-6">
+                        <input type="text" class="form-control disabledPopover" placeholder="Average Cost" disabled>
+                      </div>
+                      <div class="col-6">
+                          <input type="text" class="form-control disabledPopover" placeholder="Average Cost" disabled>
+                      </div>
+                    </div>
+                    <div class="row mt-3">
+                      <div class="col-12">
+                        <label class="form-label"><strong>Tourist Attractions</strong></label>
+                      </div>
+                    </div>
+                    <div class="row mt-1 h-50">
+                      <div class="col-12 h-100">
+                        <div class="card h-100 w-100">
+                          <div class="card-body h-100 blurred-back container overflow-auto">
+                            <ul id="tourist-list">
+                            </ul>
+                            
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
+        <div class="modal-footer border-0">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- You can also require other files to run in this process -->
+  <script src="./bower_components/jquery/dist/jquery.min.js"></script>
+  <script src="./renderer.js"></script>
+</body>
+
+</html>
